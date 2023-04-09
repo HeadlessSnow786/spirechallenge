@@ -5,6 +5,8 @@ from django.http import HttpResponseRedirect
 from .forms import CoordForm
 from django.views.generic import TemplateView
 
+from .calculations import calculations
+
 #from .calculations import reason_list
 
 # Create your views here.
@@ -23,6 +25,7 @@ def get_coords(request):
     if form.is_valid():
         form.save()
         form = CoordForm()
+        calculations()
 
     else:
         form = CoordForm()
