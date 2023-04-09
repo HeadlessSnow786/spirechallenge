@@ -1,6 +1,18 @@
 import requests
 import json
 
+import sqlite3
+
+#extablish connection to database
+conn = sqlite3.connect('db.sqlite3')
+cur = conn.cursor()
+ddata = cur.execute("SELECT * FROM my_app_coordinates")
+for item in ddata:
+    break
+#closing connection
+print('Closing Connection')
+conn.close()
+
 headers = {
     "spire-api-key": "DaVrozYhAZbbVJVb37AccvH8PjucQXTe",
     "Content-Type": "application/json",
@@ -10,9 +22,9 @@ payload = json.dumps(
         "route": {
             "name": "my_example_route",
             "waypoints": [
-                {"time": "2023-04-8T12:00:00", "lat": 40.526101, "lon": -74.039306},
-                {"time": "2023-04-8T13:00:00", "lat": 39.97322, "lon": -71.954218},
-                {"time": "2023-04-8T14:00:00", "lat": 40.2496605, "lon": -72.996762},
+                {"time": item[5], "lat": item[1], "lon": item[2]},
+                {"time": item[5], "lat": item[3], "lon": item[4]},
+                {"time": item[5], "lat": (item[1]+item[3])/2, "lon": (item[2]+item[4])/2}
             ],
         },
         "bundles": "basic,maritime",
@@ -55,13 +67,29 @@ reason_list = []
 danger = False
 danger_cood = []
 reason = "Reason(s) for danger: "
+print(json_data)
 for x in range(3): #keep incrementing coordinates until reached the end
-    #print(x_coor1)
-    #print(y_coor1)
-    wind_speed = float(json_data["data"][x]["values"]["wind_speed"])
-    precip_rate = float(json_data["data"][x]["values"]["precipitation_rate"])
-    visibility = float(json_data["data"][x]["values"]["surface_visibility"])
-    wave_height = float(json_data["data"][x]["values"]["sea_surface_wave_significant_height"])
+    try:
+        wind_speed = float(json_data["data"][x]["values"]["wind_speed"])
+    except:
+        wind_speed = 0
+
+    try:
+        precip_rate = float(json_data["data"][x]["values"]["precipitation_rate"])
+    except:
+        precip_rate = 0
+
+    try:
+        visibility = float(json_data["data"][x]["values"]["surface_visibility"])
+    except:
+        visibility = 0
+
+    try:
+        wave_height = float(json_data["data"][x]["values"]["sea_surface_wave_significant_height"])
+    except:
+        wave_height = 0.0
+
+
     if wind_speed > 8.9: #8.9 m/s is fast winds
         danger = True
         danger_cood.append((x_coor1, y_coor1))
