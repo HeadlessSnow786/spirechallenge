@@ -1,0 +1,84 @@
+
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <div class="box">
+      <h2 style="font-size: 45px;", style="font-family: 'Lucida Grande', 'Lucida Sans'">Compass Companion</h2>
+    </div>
+    <style>
+      .image-container img {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <style>
+        h1, h2, div{
+            text-align:center
+        }
+    </style>
+    <style>
+		.box {
+			width: 500px;
+			height: 150px;
+      top: 100%;
+			left: 100%;
+			transform: center();
+			border: 5px solid rgb(38, 101, 147);
+			background-color: rgb(81, 155, 245);
+			padding: 0px;
+			box-sizing: border-box;
+      margin: 0 auto;
+		}
+	</style>
+  <style>
+		.box2 {
+			width: 400px;
+			height: 100px;
+      top: 50%;
+			left: 50%;
+			transform: center();
+			border: 10px solid rgb(38, 101, 147);
+			background-color: rgb(81, 155, 245);
+			padding: 0px;
+			box-sizing: border-box;
+      margin: 0 auto;
+		}
+	</style>
+</head>
+<body style="background-color: #ffffffd9;">
+
+  {% load static %}
+    <img src="{% static '/images/waterflow.jpg' %}" alt="Description of image" width="600" height="200"><br>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+    <label style="color: rgb(63, 58, 58);">Visit This Site:</label><br>
+    <label style="color: rgb(63, 58, 58);">https://kepler.gl/demo</label><br>
+
+    <form action="" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="Submit" value="Save">
+    </form>
+   
+    <p03 style="color: rgb(63, 58, 58);">Final Estimated Time:</p03><br>
+
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    
+    <div class="box2">
+      <h2 style="color: rgb(0, 0, 0);">Val</h2>
+    </div>
+    <div class="image-container">
+      {% load static %}
+      <img src="{% static '/images/ocean-sea-waves-ripples-water-background_1017-37268.avif' %}" alt="Description of image" width="472" height="200">
+      <img src="{% static '/images/ocean-sea-waves-ripples-water-background_1017-37268.avif' %}" alt="Description of image" width="472" height="200">
+      <img src="{% static '/images/ocean-sea-waves-ripples-water-background_1017-37268.avif' %}" alt="Description of image" width="472" height="200">
+    </div>
+    
+</body>
+
+
+
+
