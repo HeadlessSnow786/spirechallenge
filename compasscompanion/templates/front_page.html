@@ -10,6 +10,13 @@
       <h2 style="font-size: 45px;", style="font-family: 'Lucida Grande', 'Lucida Sans'">Compass Companion</h2>
     </div>
     <style>
+      .image-container img {
+        display: inline-block;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <style>
         h1, h2, div{
             text-align:center
         }
@@ -43,29 +50,19 @@
 		}
 	</style>
 </head>
-<body style="background-color: #e8f9ffd9;">
-    <img src="waterflow.jpg" alt="Description of image" width="600" height="200"><br>
+<body style="background-color: #ffffffd9;">
+  {% load static %}
+    <img src="{% static '/images/waterflow.jpg' %}" alt="Description of image" width="600" height="200"><br>
     <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
 
     <label style="color: rgb(63, 58, 58);">Visit This Site:</label><br>
     <label style="color: rgb(63, 58, 58);">https://kepler.gl/demo</label><br>
 
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-    <p03 style="color: rgb(63, 58, 58);">Intial Estimated Start Time:</p03><br>
-    <input type="text" id="intialTime" name="intialTime">
-		<button style="color: rgb(63, 58, 58);">Submit</button><br>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-
-    <p03 style="color: rgb(63, 58, 58);">Intial Port:</p03><br>
-    <input type="text" id="intialPort" name="intialPort">
-		<button style="color: rgb(63, 58, 58);">Submit</button><br>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-
-    <p03 style="color: rgb(63, 58, 58);">Final Port:</p03><br>
-    <input type="text" id="finalPort" name="finalPort">
-		<button>Submit</button><br>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-    
+    <form method="POST"> {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" value="Save" />
+    </form>
+   
     <p03 style="color: rgb(63, 58, 58);">Final Estimated Time:</p03><br>
 
     <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
@@ -73,10 +70,12 @@
     <div class="box2">
       <h2 style="color: rgb(0, 0, 0);">Val</h2>
     </div>
-    <img src="cartoon-waves-2018-13.jpeg" alt="Description of image" width="600" height="200"><br>
-
-
-
+    <div class="image-container">
+      <img src="ocean-sea-waves-ripples-water-background_1017-37268.avif" alt="Description of image" width="472" height="200">
+      <img src="ocean-sea-waves-ripples-water-background_1017-37268.avif" alt="Description of image" width="472" height="200">
+      <img src="ocean-sea-waves-ripples-water-background_1017-37268.avif" alt="Description of image" width="472" height="200">
+    </div>
+    
 </body>
 
 {% endblock %}
