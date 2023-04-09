@@ -1,4 +1,4 @@
-"""hackathon URL Configuration
+"""compasscompanion URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -16,10 +16,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from pages.views import map_view, home_view
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home_view, name='home'),
-    path('/map', map_view, name='googlemap')
 ]
