@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from map.views import map_view
+from pages.views import map_view, home_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', map_view, name='home')
+    path('', home_view, name='home'),
+    path('/map', map_view, name='googlemap')
 ]
