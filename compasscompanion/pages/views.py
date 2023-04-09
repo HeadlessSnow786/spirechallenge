@@ -6,4 +6,11 @@ def map_view(request):
         
     }
 
+    return render(request, 'map.html', context)
+
+def home_view(request):
+    context = {
+
+    }
+
     return render(request, 'base.html', context)
